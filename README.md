@@ -77,4 +77,4 @@ Gleich zu Beginn ist es wichtig zu wissen, dass ich keinerlei Arbeitsverhältnis
 
 Sonst gilt natürlich, wenn dir ein Feature fehlt oder du einen Bug gefunden hast, kannst du gerne hier im Github ein Issue aufmachen. Je nachdem ob mir das Feature gefällt werde ich es in das Projekt einbauen. Alternativ kannst du natürlich jederzeit einen Pull Request aufmachen und Bugs selber schließen und Features einbauen. 
 
-Wenn du das Projekt nutzt wäre es deshalb nett wenn du mir zumindest einen Kaffee spendieren würdest https://www.buymeacoffee.com/maxman
+Wenn du das Projekt nutzt wäre es außerdem nett wenn du mir zumindest einen Kaffee spendieren würdest https://www.buymeacoffee.com/maxman
