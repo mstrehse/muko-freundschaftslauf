@@ -42,7 +42,7 @@
 
             <ul id="menu" class="uppercase text-primary text-l mt-6 hidden lg:flex lg:absolute lg:top-0 lg:right-0 lg:mr-6 lg:mt-12">
                 <li class="mr-6 mb-3 hover:underline"><a href="/">Startseite</a></li>
-                <li class="mr-6 mb-3 hover:underline text-magenta"><a href="{{ route('team.create') }}">Mitmachen</a></li>
+                {% if allow_access() %}<li class="mr-6 mb-3 hover:underline text-magenta"><a href="{{ route('team.create') }}">Mitmachen</a></li>{% endif %}
                 <li class="mr-6 mb-3 hover:underline"><a href="/gallery">Galerie</a></li>
                 <li class="mr-6 mb-3 hover:underline"><a href="/wie">Wie funktioniert das?</a></li>
                 <li class="mr-6 mb-3 hover:underline"><a href="/wir">Wer sind wir?</a></li>
@@ -53,7 +53,7 @@
             <div class="mb-6 -mx-6 relative">
                 <img src="https://imx.marke2.de/1024x,q90/http://freundschaftslauf.muko-berlin-brandenburg.de/header.jpg" />
 
-                <div id="countdown" class="text-white absolute left-0 right-0 bottom-0 py-3 bg-primary text-center" data-endtime="June 10, 2020 00:00:00">
+                <div id="countdown" class="text-white absolute left-0 right-0 bottom-0 py-3 bg-primary text-center" data-endtext="Die Freundschaftslauf Wochen 2020 sind vorbei. Danke an alle Läufer und Sponsoren" data-endtime="{{ config('fsl.allow-registrations') }}">
 
                 </div>
             </div>

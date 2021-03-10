@@ -9,11 +9,10 @@
  * file that was distributed with this source code.
  */
 
-/**
+/*
  * Configuration options for Twig.
  */
 return [
-
     'twig' => [
         /*
         |--------------------------------------------------------------------------
@@ -34,7 +33,6 @@ return [
         |
         */
         'environment' => [
-
             // When set to true, the generated templates have a __toString() method
             // that you can use to display the generated nodes.
             // default: false
@@ -99,7 +97,6 @@ return [
     ],
 
     'extensions' => [
-
         /*
         |--------------------------------------------------------------------------
         | Extensions
@@ -193,6 +190,17 @@ return [
             'head',
             'last',
             'mix',
+            'allow_access' => function () {
+                $end = config('fsl.allow-registrations');
+                $end = date_create($end);
+                $now = new \DateTime();
+
+                if ($end < $now) {
+                    return false;
+                }
+
+                return true;
+            },
         ],
 
         /*
@@ -225,13 +233,13 @@ return [
         */
         'filters' => [
             'get' => 'data_get',
-            'gender' => function($gender){
-                if($gender == 'm'){
+            'gender' => function ($gender) {
+                if ($gender == 'm') {
                     return 'Herr';
-                }elseif($gender == 'w'){
+                } elseif ($gender == 'w') {
                     return 'Frau';
                 }
-            }
+            },
         ],
     ],
 ];

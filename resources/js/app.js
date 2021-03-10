@@ -39,7 +39,9 @@ window.addEventListener("turbolinks:load", function () {
     });
 });
 
-var countDownDate = new Date("June 10, 2020 23:59:59").getTime();
+var countDownEnd = document.getElementById("countdown").getAttribute('data-endtime');
+var countDownEndText = document.getElementById("countdown").getAttribute('data-endtext');
+var countDownDate = new Date(countDownEnd).getTime();
 
 var x = setInterval(function() {
 
@@ -62,7 +64,7 @@ var x = setInterval(function() {
     // If the count down is finished, write some text
     if (distance < 0) {
       clearInterval(x);
-      document.getElementById("countdown").innerHTML = "Die Freundschaftslauf Wochen 2020 sind vorbei. Danke an alle Läufer und Sponsoren";
+      document.getElementById("countdown").innerHTML = countDownEndText;
     }
   }, 1000);
 

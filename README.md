@@ -1,79 +1,56 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+# Digitaler Muko Freundschaftslauf Website
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+Website für die Durchführung des digitalen Muko Freundschaftslaufes ursprünglich entwickelt für den Mukoviszidose Landesverband Berlin Brandenburg e.V.
 
-## About Laravel
+## Systemvoraussetzungen
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- PHP >= 7.2.5
+- MySQL / MariaDB Server
+- Imageproxy Server (https://github.com/willnorris/imageproxy)
+- BCMath PHP Extension
+- Ctype PHP Extension
+- Fileinfo PHP extension
+- JSON PHP Extension
+- Mbstring PHP Extension
+- OpenSSL PHP Extension
+- PDO PHP Extension
+- Tokenizer PHP Extension
+- XML PHP Extension
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Installation
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+1. Herunterladen und in den Zielordner auf dem Webserver entspacken
+2. Per SSH auf den Server verbinden und die Abhängigkeiten herunter laden `composer install` und `npm install`
+3. `.env.example` kopieren und als `.env` einfügen. Die Werte für die Datenbank, Email, Imageproxy und den API Key anpassen
+4. Datenbank einspielen z.B. mit PHPMyAdmin und der `database.sql` Datei im Projekt oder `php artisan migrate`
+5. Symlink für den Storage Ordner setzen `php artisan storage:link` oder manuell (https://laravel.com/docs/8.x/filesystem#the-public-disk)
+6. Der Document Root des Webserver muss auf den Ordner `public` zeigen (https://laravel.com/docs/8.x/deployment)
 
-## Learning Laravel
+## Alternativ: Installation lokal mit ddev (MacOSX)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+1. Homebrew installieren: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
+2. Docker installieren: [Docker CE Downloads](https://hub.docker.com/search?q=&type=edition&offering=community)
+3. DDEV installieren: `brew tap drud/ddev && brew install ddev`
+4. Projekt auschecken: `git clone https://github.com/mstrehse/muko-freundschaftslauf.git`
+5. In das Projektverzeichnis wechseln `cd muko-freundschaftslauf`
+6. DDEV starten: `ddev start`
+7. `.env.local` nach `.env` kopieren und Werte anpassen wenn gewollt
+8. Abhängigkeiten installieren `ddev exec composer install` und `ddev exec npm install`
+9. Datenbank einspielen `ddev exec php artisan migrate`
+10. Storage verlinken `ddev exec php artisan storage:link`
+11. Seite im Browser öffnen: [https://muko-freundschaftslauf.ddev.site](https://muko-freundschaftslauf.ddev.site)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Registrierungen freischalten und Countdown neu starten
 
-## Laravel Sponsors
+Damit Bewerbungen wieder erlaubt sind, muss der Wert `FSL_ALLOW_REGISTRATIONS` in der `.env` auf das Zieldatum gestellt werden. Die Zeitzone des Servers sollte die gleiche sein wie die der Nutzer, sonst gibt es eine Differenz zwischen dem Countdown und dem Zeitpunkt an welchem die Plattform geschlossen wird.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## Texte und Templates anpassen
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
-- [云软科技](http://www.yunruan.ltd/)
+Die Texte und Templates findest du im Ordner `resources/views`. Übersetzungen für Buttons und Fehlermeldungen liegen zum Teil auch in den Übersetzungsdateien in `resources/lang`.
+## Wenn was nicht geht
 
-## Contributing
+Gleich zu Beginn ist es wichtig zu wissen, dass ich keinerlei Arbeitsverhältnis mit dem Mukoviszidose Landesverbank habe. Alles passiert hier absolut freiwillig, bitte behalte das bei deinen Anfragen im Hinterkopf. Ich werde hier auch keine Angebote für die Weiterentwicklung annehmen.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Sonst gilt natürlich, wenn dir ein Feature fehlt oder du einen Bug gefunden hast, kannst du gerne hier im Github ein Issue aufmachen. Je nachdem ob mir das Feature gefällt werde ich es in das Projekt einbauen. Alternativ kannst du natürlich jederzeit einen Pull Request aufmachen und Bugs selber schließen und Features einbauen. 
 
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Wenn du das Projekt nutzt wäre es deshalb nett wenn du mir zumindest einen Kaffee spendieren würdest https://www.buymeacoffee.com/maxman
