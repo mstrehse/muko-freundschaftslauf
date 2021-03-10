@@ -131,7 +131,7 @@
             <div class="relative container max-w-560 mx-auto my-6 p-6 bg-white">
                 <a class="absolute top-0 right-0 text-4xl" href="/team/{{team.id}}">&times;</a>
 
-                {% include action with {team: team} %}
+                {% include '../'~action with {team: team} %}
             </div>
         </div>
     {% endif %}

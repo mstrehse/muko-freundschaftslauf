@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Result;
 use App\Exports\ResultExport;
+use App\Result;
 use Maatwebsite\Excel\Facades\Excel;
-use Illuminate\Http\Request;
 
 class ResultController extends Controller
 {
@@ -16,25 +15,21 @@ class ResultController extends Controller
      */
     public function index()
     {
-        //
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @param  \App\Team  $team
      * @return \Illuminate\Http\Response
      */
     public function create(\App\Team $team)
     {
-        return redirect("/team/$id");
-
         $runners = [];
 
         $runners["$team->firstname $team->lastname"] = "$team->firstname $team->lastname";
 
-        if($team->members){
-            foreach($team->members as $member){
+        if ($team->members) {
+            foreach ($team->members as $member) {
                 $runners["$member->firstname $member->lastname"] = "$member->firstname $member->lastname";
             }
         }
@@ -42,14 +37,13 @@ class ResultController extends Controller
         return view('team/show', [
             'team' => $team,
             'runners' => $runners,
-            'action' => 'result/create'
+            'action' => 'result/create',
         ]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param \App\Http\Requests\ResultRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(\App\Http\Requests\ResultRequest $request)
@@ -59,7 +53,7 @@ class ResultController extends Controller
         $result = \App\Result::create($request->only([
             'team_id',
             'name',
-            'km'
+            'km',
         ]));
 
         $result->save();
@@ -72,18 +66,15 @@ class ResultController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Result  $result
      * @return \Illuminate\Http\Response
      */
     public function show(Result $result)
     {
-        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Result $result
      * @return \Illuminate\Http\Response
      */
     public function edit(Result $result)
@@ -93,8 +84,8 @@ class ResultController extends Controller
 
         $runners["$team->firstname $team->lastname"] = "$team->firstname $team->lastname";
 
-        if($team->members){
-            foreach($team->members as $member){
+        if ($team->members) {
+            foreach ($team->members as $member) {
                 $runners["$member->firstname $member->lastname"] = "$member->firstname $member->lastname";
             }
         }
@@ -103,15 +94,13 @@ class ResultController extends Controller
             'team' => $result->team,
             'runners' => $runners,
             'action' => 'result/edit',
-            'result' => $result
+            'result' => $result,
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\ResultRequest $request
-     * @param  \App\Result  $result
      * @return \Illuminate\Http\Response
      */
     public function update(\App\Http\Requests\ResultRequest $request, Result $result)
@@ -120,7 +109,7 @@ class ResultController extends Controller
 
         $result->update($request->only([
             'name',
-            'km'
+            'km',
         ]));
 
         $result->save();
@@ -133,42 +122,43 @@ class ResultController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Result  $result
      * @return \Illuminate\Http\Response
      */
-    public function delete(Result $result){
+    public function delete(Result $result)
+    {
         return view('team/show', [
             'team' => $result->team,
             'action' => 'result/delete',
-            'result' => $result
+            'result' => $result,
         ]);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Result  $result
      * @return \Illuminate\Http\Response
      */
     public function destroy(Result $result)
     {
         $id = $result->team->id;
         $result->delete();
+
         return redirect("/team/$id");
     }
 
     /**
-     * Export all teams
+     * Export all teams.
      *
      * @param string $key
+     *
      * @return \Illuminate\Http\Response
      */
-    public function export($key){
-
-        if($key != env('API_KEY', 's87dno98s7dcfna7sd6bfi76b')){
+    public function export($key)
+    {
+        if ($key != env('API_KEY', 's87dno98s7dcfna7sd6bfi76b')) {
             return abort(404);
         }
 
-        return Excel::download(new ResultExport, 'result.xlsx');
+        return Excel::download(new ResultExport(), 'result.xlsx');
     }
 }
