@@ -14,12 +14,12 @@ Website für die Durchführung des digitalen Muko Freundschaftslaufes ursprüngl
 
 ## Export der Daten
 
-Mit den aufgelisteten URLs können Daten aus dem System in Excel exportiert werden. Der Platzhalter `{key}` steht für den API Key den Sie in der `.env` Datei festgelegt haben.
-
-Teams: `/team/export/{key}`
-Team Members: `/member/export/{key}`
-Sponsoren: `/sponsor/export/{key}`
-Laufergebnisse: `/result/export/{key}`
+Mit den aufgelisteten URLs können Daten aus dem System in Excel exportiert werden. Der Platzhalter `{key}` steht für den API Key den Sie in der `.env` Datei festgelegt haben.  
+  
+Teams: `/team/export/{key}`  
+Team Members: `/member/export/{key}`  
+Sponsoren: `/sponsor/export/{key}`  
+Laufergebnisse: `/result/export/{key}`  
 
 ## Systemvoraussetzungen
 
