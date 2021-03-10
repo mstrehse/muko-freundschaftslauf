@@ -1,0 +1,6 @@
+<div class="input editor-wrapper relative">
+    <label class="label absolute text-niagara left-0 mt-5 text-xs px-10" for="{{ name }}">{{ label }}</label>
+    <div class="editor min-h-150 textblock z-10 bg-transparent shadow appearance-none border border-primary rounded w-full py-5 px-10 pt-20 text-gray-700 leading-tight {% if errors.first(name) %} border-red-500 {% endif %}">
+    </div>
+    <textarea class="hidden" name="{{ name }}">{% if old(name) %}{{ old(name) }}{% elseif value %}{{ value }}{% elseif default %}{{ default }}{% endif %}</textarea>
+</div>

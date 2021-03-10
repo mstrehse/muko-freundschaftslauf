@@ -1,0 +1,7 @@
+{% if cta == true %}
+    <span class="inline-block bg-primary py-1 leading-30 px-3 text-white rounded font-bold text-s hover:bg-primary-hover cursor-pointer">{{ text }}</span>
+{% elseif danger == true %}
+    <span class="inline-block bg-orange py-1 leading-30 px-3 text-white rounded font-bold text-s hover:bg-orange-hover cursor-pointer">{{ text }}</span>
+{% else %}
+    <span class="inline-block bg-gray-177 py-1 leading-30 px-3 text-white rounded font-bold text-s hover:bg-gray-177-hover cursor-pointer">{{ text }}</span>
+{% endif %}

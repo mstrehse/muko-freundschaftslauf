@@ -1,0 +1,11 @@
+<h2 class="text-4xl mb-3 text-center">Glückwunsch!</h2>
+
+<p class="text-center">Sie und Ihr Team sind bereits</p>
+<p class="text-center text-5xl text-magenta font-bold">{{distance}} km</p>
+<p class="text-center">gelaufen!</p>
+
+<div class="text-center mt-6">
+    <a href="/team/{{team.id}}">
+        {% include "component/button/button-small" with {text: "zurück zum Team", cta: false} %}
+    </a>
+</div>

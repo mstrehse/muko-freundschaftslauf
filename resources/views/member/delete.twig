@@ -1,0 +1,14 @@
+<h2 class="text-2xl mb-6">Team Mitglied löschen</h2>
+
+
+<form method="post" action="{{ route('member.delete', {teamMember: teamMember}) }}">
+    {{ csrf_field() }}
+
+    <p class="mb-6">Möchten Sie {{teamMember.gender|gender}} {{teamMember.firstname}} {{teamMember.lastname}} wirklich aus Ihrem Team entfernen?</p>
+
+    <div class="flex flex-wrap mb-5 relative">
+        <button>
+            {% include "component/button/button" with {text: "Teammitglied löschen", cta: true} %}
+        </button>
+    </div>
+</form>

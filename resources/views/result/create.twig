@@ -1,0 +1,21 @@
+<h2 class="text-2xl mb-6">Ergebnis eintragen</h2>
+
+<form method="post" action="{{ route('result.create', {team: team}) }}">
+    {{ csrf_field() }}
+
+    <input type="hidden" name="team_id" value="{{team.id}}" />
+
+    <div class="flex flex-wrap mb-5 relative">
+        {% include "component/form/select" with {name: "name", label: trans("Läufer"), options: runners} %}
+    </div>
+
+    <div class="flex flex-wrap mb-5 relative">
+        {% include "component/form/input" with {name: "km", label: trans("Distanz in km (mit Punkt getrennt)")} %}
+    </div>
+
+    <div class="flex flex-wrap mb-5 relative">
+        <button>
+            {% include "component/button/button" with {text: "Ergebnis eintragen", cta: true} %}
+        </button>
+    </div>
+</form>

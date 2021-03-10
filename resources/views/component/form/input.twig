@@ -1,0 +1,8 @@
+<input id="input-{{ name }}" type="{{ type | default("text") }}" class="input z-10 bg-transparent shadow appearance-none border border-primary rounded w-full py-2 pt-5 px-3 text-gray-700 leading-tight {% if errors.first(name) %} border-magenta {% endif %}" name="{{ name }}" {% if value %}value="{{value}}"{% elseif old(name) %}value="{{ old(name) }}"{% elseif default %}value="{{default}}"{% endif %}{% if required %} required{% endif %}{% if autocomplete %} autocomplete="{{ autocomplete }}"{% endif %}{% if autofocus %} autofocus{% endif %}{% if disabled %} disabled="disabled"{% endif %}>
+<label class="label absolute pt-3 pl-3" for="{{ name }}">{{ label }}</label>
+
+{% if errors.first(name) %}
+    <p class="text-magenta text-xs italic mt-4">
+        {{ errors.first(name) }}
+    </p>
+{% endif %}

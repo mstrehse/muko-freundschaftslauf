@@ -1,0 +1,13 @@
+<h2 class="text-2xl mb-6">Team löschen</h2>
+
+<form method="post" action="{{ route('team.delete', {team: team}) }}">
+    {{ csrf_field() }}
+
+    <p class="mb-6">Möchten Sie Ihr Team {{team.name}} wirklich entfernen? Hierdurch werden alle Informationen wie Mitglieder, Sponsoren und Ergebnisse mit gelöscht.</p>
+
+    <div class="flex flex-wrap mb-5 relative">
+        <button>
+            {% include "component/button/button" with {text: "Team endgültig löschen", cta: true} %}
+        </button>
+    </div>
+</form>

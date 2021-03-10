@@ -1,0 +1,12 @@
+{% extends 'mail.layout' %}
+
+{% block content %}
+    <h1 class="h1">Beitrag gemeldet</h1>
+    <p>Folgender Beitrag wurde gemeldet:<br>
+    <a href="{{route('post.edit', {post: post, team: post.team})}}">zum Beitrag</a></p>
+    <p>Als Grund hierfür wurde folgendes angegeben:<br>
+    {{reason}}</p>
+
+    <p>Für Rückfragen wurde folgende E-Mail Adresse angegeben:<br>
+    <a href="mailto:{{email}}">{{email}}</a></p>
+{% endblock %}

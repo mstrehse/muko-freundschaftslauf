@@ -1,0 +1,29 @@
+<h2 class="text-2xl mb-6">Beitrag erstellen</h2>
+
+<script>Turbolinks.visit("/post/"+{{post.id}}+"/edit")</script>
+
+<form method="post" action="{{ route('post.update', {post: post}) }}">
+    {{ csrf_field() }}
+
+    <div class="flex flex-wrap mb-5 relative">
+        {% include "component/form/text" with {name: "text", default: post.text, label: trans("Beitragstext")} %}
+    </div>
+
+    <div class="mb-3">
+        {% for foto in post.fotos %}
+            <div class="w-1/4">
+                <img src="{{foto.src}}" />
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="flex flex-wrap mb-5 relative">
+        <button class="mr-3">
+            {% include "component/button/button" with {text: "Jetzt veröffentlichen", cta: true} %}
+        </button>
+
+        <button name="draft">
+            {% include "component/button/button" with {text: "Entwurf speichern", cta: false} %}
+        </button>
+    </div>
+</form>

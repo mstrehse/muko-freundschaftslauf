@@ -1,0 +1,24 @@
+{% set selected = '' %}
+
+{% if value %}
+    {% set selected = value %}
+{% elseif old(name) %}
+    {% set selected = old(name) %}
+{% elseif default %}
+    {% set selected = default %}
+{% endif %}
+
+<select id="input-{{ name }}" type="{{ type | default("text") }}" class="input z-10 bg-transparent shadow appearance-none border border-primary rounded w-full py-2 pt-5 px-3 text-gray-700 leading-tight {% if errors.first(name) %} border-red-500 {% endif %}" name="{{ name }}"{% if required %} required{% endif %}{% if autocomplete %} autocomplete="{{ autocomplete }}"{% endif %}{% if autofocus %} autofocus{% endif %}>
+    <option></option>
+    
+    {% for key, value in options %}
+        <option value="{{key}}"{% if selected == key %} selected="selected"{% endif %}>{{value}}</option>
+    {% endfor %}
+</select>
+<label class="label absolute pt-3 pl-3" for="{{ name }}">{{ label }}</label>
+
+{% if errors.first(name) %}
+    <p class="text-magenta text-xs italic mt-4">
+        {{ errors.first(name) }}
+    </p>
+{% endif %}

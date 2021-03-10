@@ -1,0 +1,35 @@
+{% extends "layouts.app" %}
+
+{% block title %}{{ trans('Wie funktioniert das genau?') }}{% endblock %}
+
+{% block content %}
+    <div class="md:flex">
+        <div class="md:flex-none md:w-1/3 mt-12 hidden md:block">
+            <img src="https://imx.marke2.de/600x,q90/{{ asset("/baloons.jpg") }}">
+        </div>
+        <div class="md:flex-none md:w-2/3 md:pl-12">
+            <h2 class="text-primary text-2xl mb-6 mt-12">Digitaler Muko-Freundschaftslauf 2020 – Wie funktioniert das genau?</h2>
+
+            <h3 class="text-primary text-xl mb-6">Anmeldung</h3>
+
+            <p class="mb-6">JedeR Läufer*in muss sich mit Namen, Anschrift, Geburtsjahr anmelden und entscheiden, ob er/sie Einzelläufer*in ist oder zu einem Team gehört. Ihr habt einen Monat Zeit, um euren ganz eigenen, individuellen Lauf für den guten Zweck zu laufen. </p>
+
+            <h3 class="text-primary text-xl mb-6">Sponsoren/ Spenden</h3>
+
+            <p class="mb-6">In diesem Jahr können ausschließlich Pauschalspenden angegeben werden. Wenn ein Sponsor pro Kilometer spenden möchte, bitten wir darum am Ende des Laufes die gelaufenen Kilometer zusammen zu zählen und die Spendensumme nachzutragen.</p>
+
+            <p class="mb-6">JedeR Läufer*in hat die Möglichkeit sich als Selbstspender*in einzutragen oder einen Sponsor zu suchen, mit dem individuell ausgehandelt wird, wieviel er/sie bereit ist pauschal zu spenden. Für einen Sponsor müssen die entsprechenden Daten erfasst werden: Name, Anschrift, ggf. Ansprechpartner*in und die Spendenhöhe. Pro Läufer*in oder Team können mehrere Sponsoren angegeben werden.</p>
+
+            <h3 class="text-primary text-xl mb-6">Auswertung</h3>
+
+            <p class="mb-6">Im Anschluss habt ihr die Möglichkeit eure Ergebnisse in Form von Bildern und/oder Texten auf der Freundschaftslauf Homepage hochzuladen bzw auf unserer Facebookseite. Die Spenden, die ihr erlaufen habt, gehen an den Mukoviszidose Landesverband Berlin-Brandenburg e.V. und können via SEPA Lastschriftverfahren überwiesen werden. Bitte nutzen Sie dafür folgendes <a class="text-secondary" target="_blank" href="https://secure.spendenbank.de/form/1123?langid=1">Online-Formular</a> oder überweisen Sie das Geld auf folgendes Konto:</p>
+
+            <p class="mb-6">Mukoviszidose Landesverband Berlin-Brandenburg e.V.<br>
+                IBAN DE74 1002 0500 0003 5333 11<br>
+                BIC    BFSWDE33BER<br>
+                Bank für Sozialwirtschaft Berlin
+            </p>
+        </div>
+    </div>
+
+{% endblock %}

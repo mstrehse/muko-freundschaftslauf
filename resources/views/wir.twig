@@ -1,0 +1,28 @@
+{% extends "layouts.app" %}
+
+{% block title %}{{ trans('Wer sind wir?') }}{% endblock %}
+
+{% block content %}
+    <div class="md:flex">
+        <div class="md:flex-none md:w-1/3 mt-12 hidden md:block">
+            <img src="https://imx.marke2.de/600x,q90/{{ asset("/baloons.jpg") }}">
+        </div>
+        <div class="md:flex-none md:w-2/3 md:pl-12">
+            <h2 class="text-primary text-2xl mb-6 mt-12">Der Mukoviszidose Landesverband Berlin-Brandenburg e. V.</h2>
+
+            <p class="mb-6">Der Mukoviszidose Landesverband Berlin-Brandenburg e. V.  wurde am 24. November 1991 gegründet. Er wirkt im Interesse der ca. 500 Mukoviszidosepatient*innen und deren Angehörige in den Bundesländern Berlin und Brandenburg. Der Landesverband betreut vier Projekte: die psychosoziale Beratung, die lebenswichtige mobile Physiotherapie, den Unterstützungsfonds für finanziell benachteiligte Betroffene und deren Familien und Klimafahrten an die Ostsee. Geführt wird der Landesverband von einem ehrenamtlich arbeitenden, von der Mitgliederversammlung gewählten Vorstand. Der Landesverband ist u.a. Mitglied im Paritätischen Berlin und Brandenburg, im Landesbehindertenbeirat des Landes Brandenburg und in der Landesarbeitsgemeinschaft Selbsthilfe Brandenburg. Schirmherrin ist seit Februar 2020 Frau Sylvia Lehmann MdB.</p>
+
+            <p class="mb-12">Der Mukoviszidose Landesverband Berlin-Brandenburg e. V. veranstaltet in diesem Jahr bereits zum 18. Mal den Muko-Freundschaftslauf zu Gunsten Mukoviszidose-Betroffener. Ziel der Veranstaltung ist es die unheilbare Erbkrankheit in der Öffentlichkeit bekannter zu machen und Spenden für die Projekte des Landesverbandes zu generieren.</p>
+
+            <h3 class="text-xl text-primary mb-6">Mukoviszidose-was ist das?...</h3>
+
+            <p class="mb-12">…ein schwieriges Wort… und doch handelt es sich um die häufigste der seltenen, vererbbaren Stoffwechselerkrankungen. Eine Veränderung im Erbgut führt zur Funktionsstörung aller schleimbildenen Drüsen. Diese produzieren ein zähes Sekret, welches lebenswichtige Organe, wie Lunge, Bauchspeichelsrüse, Leber und Darm schädigt.</p>
+
+            <h3 class="text-xl text-primary mb-6">Leben mit Mukoviszidose</h3>
+
+            <p class="mb-6">Mukoviszidose betrifft alle Bereiche des Lebens. Alltag, Urlaub, Arbeit, Familienleben, ja sogar die Wohnungssuche müssen, auf Grund der Komplexität der Erkrankung wohl durchdacht sein. Viele Mukoviszidose-Betroffene müssen leider frühzeitig in die Erwerbsminderungsrente gehen. Dank der täglichen, sehr zeitaufwendigen Therapie und medizinischen Entwicklung der letzten Jahre konnte die Lebenserwartung und Lebensqualität der Betroffenen gesteigert werden.</p>
+
+            <p class="mb-12">Bis heute ist Mukoviszidose nicht heilbar!</p>
+        </div>
+    </div>
+{% endblock %}

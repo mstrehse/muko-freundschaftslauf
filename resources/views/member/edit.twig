@@ -1,0 +1,32 @@
+<h2 class="text-2xl mb-6">Team Mitglied bearbeiten</h2>
+
+
+<form method="post" action="{{ route('member.update', {teamMember: teamMember}) }}">
+    {{ csrf_field() }}
+
+    <div class="flex flex-wrap mb-5 relative">
+        {% include "component/form/select" with {name: "gender", default: teamMember.gender, label: trans("Anrede"), options: {
+            'm': 'Herr',
+            'w': 'Frau',
+            'd': 'Keine'
+        }} %}
+    </div>
+
+    <div class="flex flex-wrap mb-5 relative">
+        {% include "component/form/input" with {name: "firstname", default: teamMember.firstname, label: trans("Vorname")} %}
+    </div>
+
+    <div class="flex flex-wrap mb-5 relative">
+        {% include "component/form/input" with {name: "lastname", default: teamMember.lastname, label: trans("Nachname")} %}
+    </div>
+
+    <div class="flex flex-wrap mb-5 relative">
+        {% include "component/form/input" with {name: "yearofbirth", default: teamMember.yearofbirth, label: trans("Geburtsjahr")} %}
+    </div>
+
+    <div class="flex flex-wrap mb-5 relative">
+        <button>
+            {% include "component/button/button" with {text: "Änderungen speichern", cta: true} %}
+        </button>
+    </div>
+</form>

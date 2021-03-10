@@ -1,0 +1,77 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+svg{
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+body{
+    background: #eee;
+    font-size: 16px;
+    font-family: 'Fira Sans', sans-serif;
+}
+
+h1, h2, h3, h4, h5{
+    color: rgb(0, 79, 159);
+}
+
+h1{
+
+}
+
+h2{
+
+}
+
+h3{
+
+}
+
+h4{
+
+}
+
+h5{
+
+}
+
+.input {
+    transition: border 0.2s ease-in-out;
+}
+
+.input+.label{
+	color: rgb(0, 79, 159);
+}
+
+.input:focus+.label,
+.input:active+.label,
+.input.filled+.label {
+    font-size: .75rem;
+    transition: all 0.2s ease-out;
+    top: -10px;
+    left: 0;
+    color: rgb(0, 79, 159);
+}
+
+/* purgecss ignore */
+.turbolinks-progress-bar {
+    background-color: rgb(0, 79, 159);
+}
+
+/* purgecss ignore */
+.featherlight-content{
+    max-width: 720px;
+    padding: 0 !important;
+    border: none !important;
+}
+
+/* purgecss ignore */
+.featherlight-close-icon{
+    font-size: 30px;
+    line-height: 30px;
+}

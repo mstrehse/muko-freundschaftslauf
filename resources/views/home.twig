@@ -1,0 +1,119 @@
+{% extends "layouts.app" %}
+
+{% block title %}{{ trans('Anmeldung') }}{% endblock %}
+
+{% block content %}
+
+    <div class="text-center mt-12">
+        <h1 class="text-3xl mb-0 uppercase">Muko Freundschaftslauf Wochen 2020</h1>
+        <h2 class="text-primary text-center text-2xl mb-3">10. Mai bis 10. Juni</h2>
+
+        <p class="mb-6">Aufgrund der anhaltenden Corona-Pandemie mussten wir unseren traditionellen und beliebten Freundschaftslauf im Potsdamer Lustgarten leider absagen. Trotzdem möchten wir allen interessierten Läufer*innen, Rollifahrer*innen und Inline-Skatern eine schöne Alternative anbieten:</p>
+
+        <a href="{{ route('team.create') }}">
+            {% include "component/button/button" with {text: "Jetzt mitmachen!", cta: true} %}
+        </a>
+    </div>
+
+    <div class="-mx-6 py-12 px-6 sm:flex my-12 bg-primary">
+        <div class="sm:hidden mb-12">
+            <h3 class="text-xl text-white mb-3">Grußwort von Mike Schubert, Schirmherr und Oberbürgermeister von Potsdam.</h3>
+            <p class="mb-6 text-white">Oberbürgermeister Mike Schubert gibt den virtuellen Startschuss für den Muko Freunschaftslauf 2020 und ruft zum gemeinsamen Engagement auf.</p>
+
+            <a href="#" data-featherlight="#grusswort">
+                {% include "component/button/button" with {text: "Grüßwort ansehen", cta: true} %}
+            </a>
+        </div>
+        <div class="sm:w-1/2">
+            <div class="sm:pr-12">
+                <a data-featherlight="#grusswort">
+                    <img src="https://imx.marke2.de/600x,q90/{{ asset("mike-schubert.jpg") }}" />
+                </a>
+                <div id="grusswort" class="hidden">
+                    <video width="100%" height="240" controls>
+                    <source src="/ob.webm" type='video/webm; codecs="vp8, vorbis"' />
+                    <source src="/ob.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
+                    <source src="/ob.ogv" type='video/ogg; codecs="theora, vorbis"' />
+                    Ihr Browser unterstützt keine Videos, laden Sie sich das Video <a href="/ob.mp4" target="_blank">hier</a> herunter.
+                </video>
+                </div>
+            </div>
+        </div>
+        <div class="hidden sm:block sm:w-1/2">
+            <h3 class="text-xl text-white mb-3">Grußwort von Mike Schubert, Schirmherr des Freundschaftslauf und Oberbürgermeister von Potsdam.</h3>
+            <p class="mb-6 text-white">Oberbürgermeister Mike Schubert gibt den virtuellen Startschuss für den Muko Freunschaftslauf 2020 und ruft zum gemeinsamen Engagement auf.</p>
+
+            <a href="#" data-featherlight="#grusswort">
+                {% include "component/button/button" with {text: "Grüßwort ansehen", cta: true} %}
+            </a>
+        </div>
+    </div>
+
+    <div class="sm:flex">
+        <div class="sm:w-1/2 sm:pr-12 mb-6 sm:mb-0">
+            <img src="/run.jpg" class="w-full h-auto" />
+        </div>
+        <div class="sm:w-1/2">
+            <p class="mb-6 text-2xl text-primary">Wir laufen gemeinsam getrennt für einen guten Zweck!</p>
+
+            <p class="mb-6">Wir rufen Euch in der Zeit vom 10. Mai bis 10. Juni auf:</p>
+
+            <ul class="list-disc pl-6">
+                <li><a class="text-secondary" href="{{ route('team.create') }}">Meldet Euch an</a> und lauft los!</li>
+                <li>Wann, wo und so oft Ihr möchtet!</li>
+                <li>Teilt Eure Erlebnisse, Fotos und/Texte mit uns auf <a href="https://www.facebook.com/muko.berlin.brandenburg/" target="_blank" class="text-secondary">Facebook,</a> <a href="https://www.instagram.com/mukoverband/" class="text-secondary" target="_blank">Instagram!</a> und/oder ladet Sie auf unsere Homepage hoch!</li>
+                <li>Jede Spende hilft!</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="py-12 px-6 -mx-6 my-12 bg-primary text-white">
+
+        <h3 class="text-white text-2xl text-center mb-6">Der virtuelle Startschuss erfolgt am <br/>10. Mai um 10:00 Uhr.</h3>
+
+        <p class="text-center">Durch Euer Engagement und Eure Spenden werden wir auch zukünftig in der Lage sein, weitere tolle Projekte und Angebote für Mukoviszidose-Betroffene und ihre Angehörigen anzubieten. Dazu gehören die mobile Physiotherapie, sozialrechtliche und psychosoziale Beratungen, Klimafahrten an die Ostsee und der Unterstützungsfonds für finanziell benachteiligte Mukoviszidose-Betroffene und ihre Familien.</p>
+
+        <div class="text-center pt-6">
+            <a href="{{ route('team.create') }}">
+                {% include "component/button/button" with {text: "Jetzt mitmachen!", cta: true} %}
+            </a>
+        </div>
+    </div>
+
+    <div class="-mx-6 px-6 sm:flex my-12">
+        <div class="sm:w-1/2 sm:pr-12 mb-12 sm:mb-0">
+            <img src="/reach-out.jpg" class="w-full h-auto">
+        </div>
+        <div class="sm:w-1/2">
+            <h3 class="text-primary text-xl mb-6">Für Rückfragen steht Euch das Team der Kontakt- und Beratungsstelle gerne zur Verfügung:</h3>
+            <p class="font-bold">Mukoviszidose Landesverband Berlin-Brandenburg e.V.</p>
+            <p class="mb-3">Rykestraße 25<br/>
+            10405 Berlin</p>
+            Tel.: 030 40056693<br>
+            <p>Email: kontakt@muko-berlin-brandenburg.de<br/>
+            </p>
+        </div>
+    </div>
+
+    <div class="pb-12 container max-w-container mx-auto relative">
+        <h3 class="text-primary text-2xl text-center">Wir bedanken uns für die Unterstützung bei</h3>
+
+        <div class="text-center mt-6">
+            <img class="inline-block w-auto h-16 mx-6 mb-6" src="https://imx.marke2.de/x128/{{asset('sponsors/klinikum.jpg')}}">
+            <img class="inline-block w-auto h-16 mx-6 mb-6" src="https://imx.marke2.de/x128/{{asset('sponsors/mercure.jpg')}}">
+            <img class="inline-block w-auto h-16 mx-6 mb-6" src="https://imx.marke2.de/x128/{{asset('sponsors/mtu.png')}}">
+            <img class="inline-block w-auto h-16 mx-6 mb-6" src="https://imx.marke2.de/x128/{{asset('sponsors/mylan.png')}}">
+            <img class="inline-block w-auto h-16 mx-6 mb-6" src="https://imx.marke2.de/x128/{{asset('sponsors/pape.png')}}">
+            <img class="inline-block w-auto h-16 mx-6 mb-6" src="https://imx.marke2.de/x128/{{asset('sponsors/potsdam.jpg')}}">
+            <img class="inline-block w-auto h-16 mx-6 mb-6" src="https://imx.marke2.de/x128/{{asset('sponsors/rumpi.jpg')}}">
+            <img class="inline-block w-auto h-16 mx-6 mb-6" src="https://imx.marke2.de/x128/{{asset('sponsors/sre.jpg')}}">
+            <img class="inline-block w-auto h-16 mx-6 mb-6" src="https://imx.marke2.de/x128/{{asset('sponsors/vertex.png')}}">
+            <img class="inline-block w-auto h-16 mx-6 mb-6" src="https://imx.marke2.de/x128/{{asset('sponsors/nahundgut.png')}}">
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ mix('js/jquery.min.js') }}" type="text/javascript"></script>
+    <script src="//cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+{% endblock %}

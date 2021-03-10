@@ -1,0 +1,41 @@
+<div class="rounded overflow-hidden shadow-lg relative pb-3">
+
+    {% if post.public == 0 %}
+        <span class="absolute top-0 right-0 bg-primary text-white p-2 z-10">Entwurf</span>
+    {% endif %}
+
+    {% if post.pictures|length == 1 %}
+        <img class="w-full h-auto block" src="https://imx.marke2.de/800x,q90/{{asset('storage/'~post.pictures.0.src)}}" />
+    {% endif %}
+
+    {% if post.pictures|length > 1 %}
+        <div class="slick">
+            {% for picture in post.pictures %}
+                <img src="https://imx.marke2.de/800x,q90/{{asset('storage/'~picture.src)}}" />
+            {% endfor %}
+        </div>
+    {% endif %}
+
+
+    <div class="px-6 py-4 relative">
+        <div class="font-bold text-xl text-primary mb-2">{{post.team.name}}</div>
+
+        <div class="text-gray-150 absolute top-0 right-0 mt-3 mr-3">{{created_at|date('d.m.Y')}}</div>
+        <p class="text-gray-700 text-base">
+            {{post.text|striptags('<p><strong><br><em>')|raw}}
+        </p>
+
+        {% if edit %}
+            <a noindex nofollow href="{{route('post.edit', {team: post.team, post: post})}}" class="inline-block mt-3 modal-link" data-turbolinks="false">
+                {% include "component/button/button-small" with {text: "bearbeiten", cta: true} %}
+            </a>
+            <a noindex nofollow href="{{route('post.delete', {team: post.team, post: post})}}" class="inline-block mt-3 modal-link" data-turbolinks="false">
+                {% include "component/button/button-small" with {text: "löschen"} %}
+            </a>
+        {% endif %}
+    </div>
+
+    {% if report == true %}
+        <a target="_blank" noindex nofollow class="absolute bottom-0 right-0 mr-3 mb-1 text-sm text-gray-150 hover:text-magenta" href="{{route('post.report', {post: post})}}">melden</a>
+    {% endif %}
+</div>

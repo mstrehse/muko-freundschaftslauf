@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="{{ app.getLocale() }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta property="og:image" content="http://freundschaftslauf.muko-berlin-brandenburg.de/header.jpg">
+    <meta property="og:title" content="{% if block('title') is defined %}{{ block('title')|raw }} | {% endif %}{{ config('app.name', 'Freundschaftslauf 2020') }}">
+    <meta property="og:description" content="Meldet Euch jetzt für den Freundschaftslauf 2020 an und lauft los!">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{% if block('title') is defined %}{{ block('title')|raw }} | {% endif %}{{ config('app.name', 'Freundschaftslauf 2020') }}</title>
+
+    <!-- Styles -->
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
+
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+
+    <link rel="icon" href="http://muko-berlin-brandenburg.de/wp-content/uploads/2018/12/cropped-icon-164x164-32x32.png" sizes="32x32" />
+    <link rel="icon" href="http://muko-berlin-brandenburg.de/wp-content/uploads/2018/12/cropped-icon-164x164-192x192.png" sizes="192x192" />
+    <link rel="apple-touch-icon-precomposed" href="http://muko-berlin-brandenburg.de/wp-content/uploads/2018/12/cropped-icon-164x164-180x180.png" />
+
+    {% block head %}
+
+    {% endblock %}
+</head>
+<body class="">
+    <div id="app">
+        <div class="py-6 container max-w-container mx-auto px-6 relative">
+
+            <div id="menu-toggle" class="cursor-pointer absolute mr-6 ml-auto mt-12 right-0 top-0 lg:hidden">
+                <span class="rounded block h-1 w-12 bg-primary mb-2"></span>
+                <span class="rounded block h-1 w-12 bg-primary mb-2"></span>
+                <span class="rounded block h-1 w-12 bg-primary mb-2"></span>
+            </div>
+
+            <a href="/" class="inline-block"><img class="max-w-200" src="http://muko-berlin-brandenburg.de/wp-content/uploads/2019/11/Landesverband_Berlin-Brandenburg_eV_Logo_4c.png"></a>
+
+            <ul id="menu" class="uppercase text-primary text-l mt-6 hidden lg:flex lg:absolute lg:top-0 lg:right-0 lg:mr-6 lg:mt-12">
+                <li class="mr-6 mb-3 hover:underline"><a href="/">Startseite</a></li>
+                <li class="mr-6 mb-3 hover:underline text-magenta"><a href="{{ route('team.create') }}">Mitmachen</a></li>
+                <li class="mr-6 mb-3 hover:underline"><a href="/gallery">Galerie</a></li>
+                <li class="mr-6 mb-3 hover:underline"><a href="/wie">Wie funktioniert das?</a></li>
+                <li class="mr-6 mb-3 hover:underline"><a href="/wir">Wer sind wir?</a></li>
+            </ul>
+        </div>
+
+        <div class="container max-w-container mx-auto px-6 pb-6">
+
+            {% block content %}
+                <h2>There should be content, but somehow its missing :( </h2>
+            {% endblock %}
+        </div>
+    </div>
+
+    {% include 'component/footer' %}
+
+    <!-- Scripts -->
+    <script data-turbolinks-suppress-warning src="{{ mix('js/app.js') }}" type="text/javascript"></script>
+
+    {% block scripts %}
+
+    {% endblock %}
+</body>
+</html>

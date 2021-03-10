@@ -1,0 +1,32 @@
+<table>
+    <thead>
+    <tr>
+        <th>Vorname</th>
+        <th>Nachname</th>
+        <th>Gender</th>
+        <th>Geburtsjahr</th>
+        <th>Team</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for team in teams %}
+        <tr>
+            <td>{{ team.firstname }}</td>
+            <td>{{ team.lastname }}</td>
+            <td>{{ team.gender }}</td>
+            <td>{{ team.yearofbirth }}</td>
+            <td><a href="{{ route('team.show', {team: team}) }}">{{ team.name }}</a></td>
+        </tr>
+
+        {% for member in team.members %}
+            <tr>
+            <td>{{ member.firstname }}</td>
+            <td>{{ member.lastname }}</td>
+            <td>{{ member.gender }}</td>
+            <td>{{ member.yearofbirth }}</td>
+            <td><a href="{{ route('team.show', {team: team}) }}">{{ team.name }}</a></td>
+        </tr>
+        {% endfor %}
+    {% endfor %}
+    </tbody>
+</table>

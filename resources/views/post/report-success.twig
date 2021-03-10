@@ -1,0 +1,9 @@
+{% extends "layouts.report" %}
+
+{% block title %}{{ trans('Beitrag melden!') }}{% endblock %}
+
+{% block content %}
+    <h2 class="text-3xl mb-3 text-center">Danke für Ihre Mithilfe</h2>
+    <p class="text-center">Wir werden den Beitrag nun überprüfen und diesen wenn nötig Löschen.</p>
+    <p class="text-center mt-3"><a class="text-primary" href="{{ route('post.gallery') }}">zurück zur Galerie</a></p>
+{% endblock %}

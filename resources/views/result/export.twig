@@ -1,0 +1,18 @@
+<table>
+    <thead>
+    <tr>
+        <th>Team</th>
+        <th>Läufer</th>
+        <th>KM</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for result in results %}
+        <tr>
+            <td><a href="{{ route('team.show', {team: result.team}) }}">{{ result.team.name }}</a></td>
+            <td>{{ result.name }}</td>
+            <td>{{ result.km }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

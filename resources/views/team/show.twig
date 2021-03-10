@@ -1,0 +1,150 @@
+{% extends "layouts.app" %}
+
+{% block title %}{{ trans('Dein Team') }}{% endblock %}
+
+{% block content %}
+    <div class="mb-6">
+        <h1 class="text-4xl mb-3">Ihr Team: {{team.name}}</h1>
+
+        <p class="mb-3"><span class="text-magenta">Wichtig: Kopieren Sie sich den Link zu Ihrem Team an einen sicheren Ort!</span> Mit dem Link haben Sie die Möglichkeit die Daten Ihres Teams zu ändern und die Ergebnisse hoch zu laden.</p>
+        <p class="mb-6">Link: <a href="{{url}}" class="text-secondary">{{url}}</a> <a onclick="copy2Clipboard('{{url}}')" class="text-gray-150 hover:text-black" href="#">(kopieren<span id="copied" class="text-primary hidden"> &#10003;</span>)</a></p>
+
+        <script>
+            function copy2Clipboard(str) {
+                ta = document.createElement('textarea');
+                ta.value = str;
+                document.body.appendChild(ta);
+                ta.select();
+                document.execCommand('copy');
+                document.body.removeChild(ta);
+
+                document.getElementById('copied').classList.remove('hidden');
+
+                setTimeout(function(){
+                    document.getElementById('copied').classList.add('hidden');
+                }, 3000);
+            };
+        </script>
+
+        <a href="/team/{{team.id}}/edit" class="modal-link">
+            {% include 'component/button/button-small' with {text: 'Daten bearbeiten'} %}
+        </a>
+    </div>
+
+    <div class="mb-6">
+        <h2 class="text-2xl mb-3">Weitere Teammitglieder:</h2>
+
+        {% if team.members|length > 0 %}
+            <table class="w-full text-left table-collapse mb-3">
+                {% for member in team.members %}
+                <tr>
+                    <td class="p-2 border-t border-gray-150 whitespace-no-wrap">{{member.gender|gender}} {{member.firstname}} {{member.lastname}}</td>
+                    <td class="p-2 border-t border-gray-150 whitespace-no-wrap text-right"><a class="text-primary modal-link" href="/member/{{member.id}}/edit">Bearbeiten</a> / <a class="text-primary modal-link" href="/member/{{member.id}}/delete">Entfernen</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <p class="text-gray-150 mb-3">Sie haben noch keine weiteren Teammitglieder zu Ihrem Team hinzugefügt. Sie können dies jetzt <a href="/team/{{team.id}}/member/create" class="text-secondary modal-link">hier</a> nachholen.</p>
+        {% endif %}
+
+        <a href="/team/{{team.id}}/member/create" class="modal-link">
+            {% include 'component/button/button-small' with {text: 'Team Mitglied hinzufügen'} %}
+        </a>
+    </div>
+
+    <div class="mb-6">
+        <h2 class="text-2xl mb-3">Sponsoren:</h2>
+
+        {% if team.sponsors|length > 0 %}
+            <table class="w-full text-left table-collapse mb-3">
+                {% for sponsor in team.sponsors %}
+                <tr>
+                    <td class="p-2 border-t border-gray-150 whitespace-no-wrap">{{sponsor.name}}</td>
+                    <td class="p-2 border-t border-gray-150 whitespace-no-wrap">{{sponsor.amount}} €</td>
+                    <td class="p-2 border-t border-gray-150 whitespace-no-wrap text-right"><a class="text-primary" href="/sponsor/{{sponsor.id}}/edit">Bearbeiten</a> / <a class="text-primary" href="/sponsor/{{sponsor.id}}/delete">Entfernen</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <p class="text-gray-150 mb-3">Sie haben noch keine Sponsoren zu Ihrem Team hinzugefügt. Sie können dies jetzt <a href="/team/{{team.id}}/sponsor/create" class="text-secondary modal-link">hier</a> nachholen.</p>
+        {% endif %}
+
+        <a href="/team/{{team.id}}/sponsor/create" class="modal-link">
+            {% include 'component/button/button-small' with {text: 'Sponsor hinzufügen'} %}
+        </a>
+
+        <div class="text-xs mt-6">
+            <p class="mb-3">Die Spenden, die ihr erlaufen habt, gehen an den Mukoviszidose Landesverband Berlin-Brandenburg e.V. und können via SEPA Lastschriftverfahren überwiesen werden. Bitte nutzen Sie dafür folgendes <a class="text-secondary" target="_blank" href="https://secure.spendenbank.de/form/1123?langid=1">Online-Formular</a> oder überweisen Sie das Geld auf folgendes Konto:</p>
+
+            <p>Mukoviszidose Landesverband Berlin-Brandenburg e.V.<br>
+                IBAN DE74 1002 0500 0003 5333 11<br>
+                BIC    BFSWDE33BER<br>
+                Bank für Sozialwirtschaft Berlin
+            </p>
+        </div>
+    </div>
+
+    <div class="mb-6">
+        <h2 class="text-2xl mb-3">Ergebnisse:</h2>
+
+        {% if team.results|length > 0 %}
+            <table class="w-full text-left table-collapse mb-3">
+                {% for result in team.results %}
+                <tr>
+                    <td class="p-2 border-t border-gray-150 whitespace-no-wrap">{{result.name}}</td>
+                    <td class="p-2 border-t border-gray-150 whitespace-no-wrap">{{result.km}} km</td>
+                    <td class="p-2 border-t border-gray-150 whitespace-no-wrap text-right"><a class="text-primary" href="/result/{{result.id}}/edit">Bearbeiten</a> / <a class="text-primary" href="/result/{{result.id}}/delete">Entfernen</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <p class="text-gray-150 mb-3">Hier haben Sie später die Möglichkeit die Ergebnisse Ihres Teams einzutragen und Screenshots von Ihrer Smartwatch oder Ihrem Smartphone hoch zu laden.</p>
+        {% endif %}
+
+        <a href="/team/{{team.id}}/result/create" class="modal-link">
+            {% include 'component/button/button-small' with {text: 'Ergebnis eintragen'} %}
+        </a>
+    </div>
+
+    <div class="mb-6">
+        <h2 class="text-2xl mb-3">Beiträge</h2>
+
+        {% if posts|length > 0 %}
+            <div class="-mx-2 sm:flex sm:flex-wrap">
+                {% for post in posts %}
+                    <div class="block sm:w-1/2 p-3 sm:flex-none">
+                        {% include "post/preview" with {post: post, edit: true} %}
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="text-gray-150 mb-3">Hier haben Sie die Möglichkeit einen Beitrag über Ihren Freundschaftslauf und Bilder öffentlich zu teilen.</p>
+        {% endif %}
+
+        <a href="{{route('post.create', {team: team})}}" data-turbolinks="false">
+            {% include 'component/button/button-small' with {text: 'Beitrag erstellen'} %}
+        </a>
+    </div>
+
+    {% if action %}
+        <div id="modal" class="fixed top-0 left-0 right-0 bottom-0 bg-modal overflow-y-scroll">
+            <div class="relative container max-w-560 mx-auto my-6 p-6 bg-white">
+                <a class="absolute top-0 right-0 text-4xl" href="/team/{{team.id}}">&times;</a>
+
+                {% include action with {team: team} %}
+            </div>
+        </div>
+    {% endif %}
+
+{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="/slick/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="/slick/slick/slick-theme.css"/>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ mix('js/jquery.min.js') }}" type="text/javascript"></script>
+<script src="{{ mix('js/slick.min.js') }}" type="text/javascript"></script>
+<script src="{{ mix('js/init.slick.js') }}" type="text/javascript"></script>
+{% endblock %}

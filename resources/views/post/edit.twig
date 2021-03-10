@@ -1,0 +1,62 @@
+<h2 class="text-2xl mb-6">Beitrag bearbeiten</h2>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/vendor/jquery-3.3.1.min.js"><\/script>')</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.20.0/trumbowyg.min.js"></script>
+
+<form method="post" action="{{ route('post.update', {post: post, team: post.team}) }}" enctype="multipart/form-data">
+    {{ csrf_field() }}
+
+    <div class="mb-6">
+        <h3 class="mb-3">Fotos</h3>
+        <input type="file" name="image">
+
+        {% if errors.first("image") %}
+            <p class="text-magenta text-xs italic mt-4">
+                {{ errors.first("image") }}
+            </p>
+        {% endif %}
+
+        {% if post.pictures %}
+        <div class="-mx-2 mt-3">
+            {% for picture in post.pictures %}
+                <div class="inline-block w-20 h-20 m-2 relative">
+                    <img class="block w-20 h-20" src="https://imx.marke2.de/400x400,q90/{{asset('/storage/'~picture.src)}}" alt="Vorschau">
+                    <a data-turbolinks="false" href="{{ route('picture.delete', {picture: picture, post: post}) }}" class="absolute top-0 right-0 text-white text-xl my-1">&times;</a>
+                </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <p class="text-xs text-gray-150">Nach dem Speichern können Sie ein weiteres Foto hinzufügen und so nach und nach eine Bildergallerie erstellen.</p>
+    </div>
+
+    <h3>Beitragstext</h3>
+    <div class="flex flex-wrap mb-5 relative">
+        {% include "component/form/text" with {name: "text", default: post.text, label: trans("Beitragstext")} %}
+    </div>
+
+    <div class="mb-3">
+
+        {% for foto in post.fotos %}
+            <div class="w-1/4">
+                <img src="{{foto.src}}" />
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="flex flex-wrap mb-5 relative">
+        <button class="mr-3">
+            {% include "component/button/button" with {text: "Jetzt veröffentlichen", cta: true} %}
+        </button>
+
+        <button name="draft" value="1">
+            {% include "component/button/button" with {text: "Entwurf speichern", cta: false} %}
+        </button>
+    </div>
+</form>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.20.0/ui/trumbowyg.min.css" rel="stylesheet" />
+<script>$('.wysiwyg').trumbowyg({
+    btns: [['strong', 'em',]],
+    autogrow: true
+});</script>
