@@ -64,6 +64,10 @@ Laufergebnisse: `/result/export/{key}`
 
 Damit Bewerbungen wieder erlaubt sind, muss der Wert `FSL_ALLOW_REGISTRATIONS` in der `.env` auf das Zieldatum gestellt werden. Die Zeitzone des Servers sollte die gleiche sein wie die der Nutzer, sonst gibt es eine Differenz zwischen dem Countdown und dem Zeitpunkt an welchem die Plattform geschlossen wird.
 
+## Plattform zurücksetzen
+
+Um alle Daten zu löschen und die Plattform komplett zurück zu setzen, lösche die Datenbank und spiele diese erneut mit der `database.sql` Datei oder `php artisan migrate` ein. Lösche im Anschluss die Nutzerdateien unter `storage/public`.
+
 ## Texte und Templates anpassen
 
 Die Texte und Templates findest du im Ordner `resources/views`. Übersetzungen für Buttons und Fehlermeldungen liegen zum Teil auch in den Übersetzungsdateien in `resources/lang`.
