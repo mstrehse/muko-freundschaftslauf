@@ -24,17 +24,18 @@ Laufergebnisse: `/result/export/{key}`
 ## Systemvoraussetzungen
 
 - PHP >= 7.2.5
+- PHP Erweiterungen
+    - BCMath
+    - Ctype
+    - Fileinfo
+    - JSON
+    - Mbstring
+    - OpenSSL
+    - PDO
+    - Tokenizer
+    - XML
 - MySQL / MariaDB Server
 - Imageproxy Server (https://github.com/willnorris/imageproxy)
-- BCMath PHP Extension
-- Ctype PHP Extension
-- Fileinfo PHP extension
-- JSON PHP Extension
-- Mbstring PHP Extension
-- OpenSSL PHP Extension
-- PDO PHP Extension
-- Tokenizer PHP Extension
-- XML PHP Extension
 
 ## Installation
 
