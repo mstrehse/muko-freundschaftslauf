@@ -5,7 +5,7 @@ Website für die Durchführung des digitalen Muko Freundschaftslaufes ursprüngl
 **Was funktioniert:**
 
 - Registrierung von Teams
-- Teammitgrlieder hinzufügen
+- Teammitglieder hinzufügen
 - Sponsoren hinzufügen
 - Zwischenergebnisse für Team eintragen
 - Beiträge Text und Bild hochladen
