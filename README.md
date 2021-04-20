@@ -62,7 +62,9 @@ Laufergebnisse: `/result/export/{key}`
 
 ## Registrierungen freischalten und Countdown neu starten
 
-Damit Bewerbungen wieder erlaubt sind, muss der Wert `FSL_ALLOW_REGISTRATIONS` in der `.env` auf das Zieldatum gestellt werden. Die Zeitzone des Servers sollte die gleiche sein wie die der Nutzer, sonst gibt es eine Differenz zwischen dem Countdown und dem Zeitpunkt an welchem die Plattform geschlossen wird.
+Damit Bewerbungen wieder erlaubt sind, muss der Wert `FSL_ALLOW_REGISTRATIONS` in der `.env` auf das Zieldatum, also das Datum wann der Freundschaftslauf zuende ist, gestellt werden. Liegt der Zeitpunk in der Zukunft, ist eine Anmeldung und Nutzung der Plattform sofort möglich. Liegt der Wert in der Vergangenheit ist es nicht mehr möglich sich anzumelden, der Countdown verschwindet und der Lauf ist somit abgeschlossen. Die Zeitzone des Servers sollte die gleiche sein wie die der Nutzer, sonst gibt es eine Differenz zwischen dem Countdown und dem Zeitpunkt an welchem die Plattform geschlossen wird.
+  
+Der Wert für `FSL_ALLOW_REGISTRATIONS` kann jeder Wert sein, den die PHP Funktion `create_date` verarbeiten kann ([https://www.php.net/manual/de/function.date-create.php](https://www.php.net/manual/de/function.date-create.php)). Dies sind z.B. Angaben im Format `June 10, 2021 23:59:59`.
 
 ## Plattform zurücksetzen
 
