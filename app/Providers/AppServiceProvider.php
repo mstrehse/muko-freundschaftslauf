@@ -2,11 +2,11 @@
 
 namespace App\Providers;
 
+use App\Models\Picture;
+use App\Models\Post;
+use App\Observers\PictureObserver;
+use App\Observers\PostObserver;
 use Illuminate\Support\ServiceProvider;
-use \App\Observers\PostObserver;
-use \App\Observers\PictureObserver;
-use \App\Post;
-use \App\Picture;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -17,7 +17,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
     }
 
     /**

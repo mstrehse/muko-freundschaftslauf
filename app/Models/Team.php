@@ -1,12 +1,13 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
+use App\Models\Concerns\UsesUuid;
 use Illuminate\Database\Eloquent\Model;
 
 class Team extends Model
 {
-    use \App\Models\Concerns\UsesUuid;
+    use UsesUuid;
 
     protected $fillable = [
         'name',
@@ -18,22 +19,26 @@ class Team extends Model
         'country',
         'email',
         'phone',
-        'yearofbirth'
+        'yearofbirth',
     ];
 
-    public function members() {
+    public function members()
+    {
         return $this->hasMany('\App\TeamMember');
     }
 
-    public function sponsors(){
+    public function sponsors()
+    {
         return $this->hasMany('\App\Sponsor');
     }
 
-    public function results(){
+    public function results()
+    {
         return $this->hasMany('\App\Result');
     }
 
-    public function posts(){
-        return $this->hasMany('\App\Post');
+    public function posts()
+    {
+        return $this->hasMany('\App\Models\Post');
     }
 }

@@ -1,12 +1,13 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
+use App\Models\Concerns\UsesUuid;
 use Illuminate\Database\Eloquent\Model;
 
 class Sponsor extends Model
 {
-    use \App\Models\Concerns\UsesUuid;
+    use UsesUuid;
 
     protected $fillable = [
         'team_id',
@@ -18,10 +19,11 @@ class Sponsor extends Model
         'email',
         'phone',
         'infos',
-        'amount'
+        'amount',
     ];
 
-    public function team(){
+    public function team()
+    {
         return $this->belongsTo('\App\Team');
     }
 }

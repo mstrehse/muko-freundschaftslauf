@@ -3,26 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Exports\ResultExport;
-use App\Result;
+use App\Http\Requests\ResultRequest;
+use App\Models\Result;
+use App\Models\Team;
 use Maatwebsite\Excel\Facades\Excel;
 
 class ResultController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-    }
-
-    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(\App\Team $team)
+    public function create(Team $team)
     {
         $runners = [];
 
@@ -46,11 +39,11 @@ class ResultController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function store(\App\Http\Requests\ResultRequest $request)
+    public function store(ResultRequest $request)
     {
         $request->flash();
 
-        $result = \App\Result::create($request->only([
+        $result = Result::create($request->only([
             'team_id',
             'name',
             'km',
@@ -61,15 +54,6 @@ class ResultController extends Controller
         $id = $result->team->id;
 
         return redirect("/team/$id/distance");
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Result $result)
-    {
     }
 
     /**
@@ -103,7 +87,7 @@ class ResultController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(\App\Http\Requests\ResultRequest $request, Result $result)
+    public function update(ResultRequest $request, Result $result)
     {
         $request->flash();
 

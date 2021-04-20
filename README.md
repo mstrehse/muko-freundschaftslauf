@@ -66,6 +66,10 @@ Damit Bewerbungen wieder erlaubt sind, muss der Wert `FSL_ALLOW_REGISTRATIONS` i
   
 Der Wert für `FSL_ALLOW_REGISTRATIONS` kann jeder Wert sein, den die PHP Funktion `create_date` verarbeiten kann ([https://www.php.net/manual/de/function.date-create.php](https://www.php.net/manual/de/function.date-create.php)). Dies sind z.B. Angaben im Format `June 10, 2021 23:59:59`.
 
+```bash
+FSL_ALLOW_REGISTRATIONS="June 20, 2021 23:59:59"
+```
+
 ## Plattform zurücksetzen
 
 Um alle Daten zu löschen und die Plattform komplett zurück zu setzen, lösche die Datenbank und spiele diese erneut mit der `database.sql` Datei oder `php artisan migrate` ein. Lösche im Anschluss die Nutzerdateien unter `storage/public`.

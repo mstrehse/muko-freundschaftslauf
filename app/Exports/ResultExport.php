@@ -2,28 +2,23 @@
 
 namespace App\Exports;
 
-use App\Sponsor;
-use Maatwebsite\Excel\Concerns\FromCollection;
-use Maatwebsite\Excel\Concerns\WithStrictNullComparison;
-use Maatwebsite\Excel\Concerns\WithHeadings;
-use Maatwebsite\Excel\Concerns\WithMappingHeadings;
-use Maatwebsite\Excel\Concerns\WithMapping;
+use App\Models\Result;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
+use Maatwebsite\Excel\Concerns\WithStrictNullComparison;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ResultExport implements FromView, WithStrictNullComparison
 {
-
     public function view(): View
     {
         return view('result.export', [
-            'results' => \App\Result::orderBy('team_id')->orderBy('name')->get()
+            'results' => Result::orderBy('team_id')->orderBy('name')->get(),
         ]);
     }
 
     public function export()
     {
-        return Excel::download(new ResultExport, 'result.xlsx');
+        return Excel::download(new ResultExport(), 'result.xlsx');
     }
-
 }

@@ -3,21 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Exports\TeamExport;
-use App\Team;
+use App\Http\Requests\TeamRequest;
+use App\Models\Post;
+use App\Models\Team;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
 class TeamController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -39,7 +32,7 @@ class TeamController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function store(\App\Http\Requests\TeamRequest $request)
+    public function store(TeamRequest $request)
     {
         if ($this->allowAccess() == false) {
             return redirect('/');
@@ -47,7 +40,7 @@ class TeamController extends Controller
 
         $request->flash();
 
-        $team = \App\Team::create($request->only([
+        $team = Team::create($request->only([
             'name',
             'gender',
             'firstname',
@@ -74,7 +67,10 @@ class TeamController extends Controller
      */
     public function show(Team $team, $action = null, Request $request)
     {
-        $posts = \App\Post::whereNotNull('public')->where('team_id', $team->id)->orderBy('created_at', 'DESC')->get();
+        $posts = Post::whereNotNull('public')
+            ->where('team_id', $team->id)
+            ->orderBy('created_at', 'DESC')
+            ->get();
 
         return view('team.show', [
             'team' => $team,
@@ -103,7 +99,7 @@ class TeamController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(\App\Http\Requests\TeamRequest $request, Team $team)
+    public function update(TeamRequest $request, Team $team)
     {
         $request->flash();
 
@@ -130,16 +126,7 @@ class TeamController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Team $team)
-    {
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function distance(\App\Team $team)
+    public function distance(Team $team)
     {
         $distance = 0;
 

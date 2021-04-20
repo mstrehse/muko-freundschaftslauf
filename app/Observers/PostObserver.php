@@ -2,14 +2,14 @@
 
 namespace App\Observers;
 
-use App\Post;
+use App\Models\Post;
 
 class PostObserver
 {
     /**
      * Handle the post "created" event.
      *
-     * @param  \App\Post  $post
+     * @param  \App\Models\Post  $post
      * @return void
      */
     public function created(Post $post)
@@ -20,7 +20,7 @@ class PostObserver
     /**
      * Handle the post "updated" event.
      *
-     * @param  \App\Post  $post
+     * @param  \App\Models\Post  $post
      * @return void
      */
     public function updated(Post $post)
@@ -31,7 +31,7 @@ class PostObserver
     /**
      * Handle the post "deleted" event.
      *
-     * @param  \App\Post  $post
+     * @param  \App\Models\Post  $post
      * @return void
      */
     public function deleted(Post $post)
@@ -46,7 +46,7 @@ class PostObserver
     /**
      * Handle the post "restored" event.
      *
-     * @param  \App\Post  $post
+     * @param  \App\Models\Post  $post
      * @return void
      */
     public function restored(Post $post)
@@ -57,7 +57,7 @@ class PostObserver
     /**
      * Handle the post "force deleted" event.
      *
-     * @param  \App\Post  $post
+     * @param  \App\Models\Post  $post
      * @return void
      */
     public function forceDeleted(Post $post)

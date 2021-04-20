@@ -2,14 +2,15 @@
 
 namespace App\Mail;
 
+use App\Models\Post;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
 class ReportPost extends Mailable
 {
-    use Queueable, SerializesModels;
+    use Queueable;
+    use SerializesModels;
 
     public $post;
     public $email;
@@ -17,12 +18,13 @@ class ReportPost extends Mailable
 
     /**
      * Create a new message instance.
-     * @param \App\Post $post
+     *
      * @param string $email
      * @param string $reason
+     *
      * @return void
      */
-    public function __construct(\App\Post $post, $email, $reason)
+    public function __construct(Post $post, $email, $reason)
     {
         $this->post = $post;
         $this->email = $email;

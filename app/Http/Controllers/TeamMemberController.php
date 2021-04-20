@@ -3,26 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Exports\TeamMemberExport;
-use App\TeamMember;
+use App\Http\Requests\MemberRequest;
+use App\Models\Team;
+use App\Models\TeamMember;
 use Maatwebsite\Excel\Facades\Excel;
 
 class TeamMemberController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-    }
-
-    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(\App\Team $team)
+    public function create(Team $team)
     {
         return view('team/show', [
             'team' => $team,
@@ -35,11 +28,11 @@ class TeamMemberController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function store(\App\Http\Requests\MemberRequest $request)
+    public function store(MemberRequest $request)
     {
         $request->flash();
 
-        $member = \App\TeamMember::create($request->only([
+        $member = TeamMember::create($request->only([
             'team_id',
             'gender',
             'firstname',
@@ -52,15 +45,6 @@ class TeamMemberController extends Controller
         $id = $member->team->id;
 
         return redirect("/team/$id");
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function show(TeamMember $teamMember)
-    {
     }
 
     /**
@@ -82,7 +66,7 @@ class TeamMemberController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(\App\Http\Requests\MemberRequest $request, TeamMember $teamMember)
+    public function update(MemberRequest $request, TeamMember $teamMember)
     {
         $request->flash();
 

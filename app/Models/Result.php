@@ -1,20 +1,22 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
+use App\Models\Concerns\UsesUuid;
 use Illuminate\Database\Eloquent\Model;
 
 class Result extends Model
 {
-    use \App\Models\Concerns\UsesUuid;
+    use UsesUuid;
 
     protected $fillable = [
         'team_id',
         'name',
-        'km'
+        'km',
     ];
 
-    public function team(){
+    public function team()
+    {
         return $this->belongsTo('\App\Team');
     }
 }

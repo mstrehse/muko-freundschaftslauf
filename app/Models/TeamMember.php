@@ -1,22 +1,24 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
+use App\Models\Concerns\UsesUuid;
 use Illuminate\Database\Eloquent\Model;
 
 class TeamMember extends Model
 {
-    use \App\Models\Concerns\UsesUuid;
+    use UsesUuid;
 
     protected $fillable = [
         'team_id',
         'firstname',
         'lastname',
         'gender',
-        'yearofbirth'
+        'yearofbirth',
     ];
 
-    public function team(){
+    public function team()
+    {
         return $this->belongsTo('\App\Team');
     }
 }
