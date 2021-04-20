@@ -24,21 +24,21 @@ class Team extends Model
 
     public function members()
     {
-        return $this->hasMany('\App\TeamMember');
+        return $this->hasMany(TeamMember::class);
     }
 
     public function sponsors()
     {
-        return $this->hasMany('\App\Sponsor');
+        return $this->hasMany(Sponsor::class);
     }
 
     public function results()
     {
-        return $this->hasMany('\App\Result');
+        return $this->hasMany(Result::class);
     }
 
     public function posts()
     {
-        return $this->hasMany('\App\Models\Post');
+        return $this->hasMany(Post::class);
     }
 }

@@ -24,6 +24,6 @@ class Sponsor extends Model
 
     public function team()
     {
-        return $this->belongsTo('\App\Team');
+        return $this->belongsTo(Team::class);
     }
 }

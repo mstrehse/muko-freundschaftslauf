@@ -17,11 +17,11 @@ class Post extends Model
 
     public function team()
     {
-        return $this->belongsTo('\App\Team');
+        return $this->belongsTo(Team::class);
     }
 
     public function pictures()
     {
-        return $this->hasMany('\App\Models\Picture');
+        return $this->hasMany(Picture::class);
     }
 }
