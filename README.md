@@ -40,7 +40,7 @@ Laufergebnisse: `/result/export/{key}`
 ## Installation
 
 1. Herunterladen und in den Zielordner auf dem Webserver entspacken
-2. Per SSH auf den Server verbinden und die Abhängigkeiten herunter laden `composer install` und `npm install`
+2. Per SSH auf den Server verbinden und die Abhängigkeiten herunter laden `composer install`
 3. `.env.example` kopieren und als `.env` einfügen. Die Werte für die Datenbank, Email, Imageproxy und den API Key anpassen. Der API Key erlaubt den Zugriff auf die Exportschnittstellen und sollte auf jeden Fall geändert werden!
 4. Datenbank einspielen z.B. mit PHPMyAdmin und der `database.sql` Datei im Projekt oder `php artisan migrate`
 5. Symlink für den Storage Ordner setzen `php artisan storage:link` oder manuell (https://laravel.com/docs/8.x/filesystem#the-public-disk)
